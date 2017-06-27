@@ -1,0 +1,5 @@
+{
+    "url": "https://»site«.zendesk.com/api/v2",
+    "username": "»agent email«",
+    "token": "»API token«"
+}
