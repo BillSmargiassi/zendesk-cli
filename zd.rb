@@ -1,5 +1,11 @@
 #!/usr/bin/env ruby
 
+# Provide some command line functions for ZenDesk
+# Search
+#
+# Bill Smargiassi
+# 2017-06-27
+
 require "zendesk_api"
 require "string-scrub"
 require "json"
