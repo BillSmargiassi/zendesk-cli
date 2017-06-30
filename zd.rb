@@ -17,8 +17,15 @@ end
 
 def search(client, terms)
 	search_terms = terms.join(' ')
-	output = client.search(:query => search_terms)
-	output.each { |elt| jj elt }
+	return client.search(:query => search_terms)
+end
+
+def finduser(client, id)
+	client.user.find(:id => id)
+end
+
+def findorg(client, id)
+	return client.organization.find(:id => id)
 end
 
 jconfig = JSON.parse(File.read(ENV['HOME'] + "/.zdapi.json"))
@@ -35,7 +42,11 @@ command = ARGV.shift
 # Process commands
 case command
 	when "search" 
-		search(client, ARGV)
+		search(client, ARGV).each { |elt| jj elt }
+	when "user"
+		jj finduser(client, ARGV[0]) # TODO: should probably do a usage check on the number of args
+	when "org"
+		jj findorg(client, ARGV[0])  # TODO: another usage check
 	else
 		usage()
 end
