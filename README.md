@@ -7,11 +7,15 @@ I pipe the JSON output to [`jq`][1] often. I use the TaskPaper to send to OmniFo
 ## Configuration
 
 Create a file named .zdapi.json in your home folder. Put the API URL, your agent email, and a valid API key in it like this:
+
+```
 {
-"url": "https://»site«.zendesk.com/api/v2",
-"username": "»agent email«",
-"token": "»API token«"
+	"url": "https://»site«.zendesk.com/api/v2",
+	"username": "»agent email«",
+	"token": "»API token«"
 }
+```
+
 Copy over the file zdapi.json.template to /.zdapi.json to get started.
 
 ## Usage
