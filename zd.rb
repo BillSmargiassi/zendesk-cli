@@ -12,7 +12,7 @@ require "json"
 
 def usage
 	puts "Usage: zd.rb »command«"
-	puts "Command can be 'search'"
+	puts "Command can be search, user, or org"
 end
 
 def search(client, terms)
