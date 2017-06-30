@@ -12,7 +12,7 @@ require "json"
 
 def usage
 	puts "Usage: zd.rb »command« »terms or id«"
-	puts "Command can be search, ticket, user, or org"
+	puts "Command can be search, ticketproject, ticketnotes, user, or org"
 end
 
 # perform a generic search for anything
@@ -48,13 +48,20 @@ def ticketproject(client, id)
 	else
 		priority_text = ""
 	end
-	puts "#{id}: #{ticket.subject}
+	return "#{id}: #{ticket.subject}
     #{org.name.to_s}
     #{contact}: #{ticket.requester.email}
     Original priority: #{ticket.priority}
 #{priority_text}- #{id}: Send a response based on ticket @context(Work : Ticket Duties)
 - #{id}: Wait to hear from #{contact} @context(Work : Waiting For)
 - #{id}: Set ticket to solved @context(Work : Ticket Duties)"
+end
+
+# Output my Markdown Ticket Notes format
+def ticketnotes(client, id)
+	ticket = client.ticket.find!(:id => id)
+	org = client.organization.find!(:id => ticket.organization.id)
+	return "\# #{org.name}, #{ticket.priority.capitalize}: #{ticket.subject}, active"
 end
 
 jconfig = JSON.parse(File.read(ENV['HOME'] + "/.zdapi.json"))
@@ -78,6 +85,8 @@ case command
 		jj findorg(client, ARGV[0])  # TODO: another usage check
 	when "ticketproject"
 		puts ticketproject(client, ARGV[0])
+	when "ticketnotes"
+		puts ticketnotes(client, ARGV[0])
 	else
 		usage()
 end
