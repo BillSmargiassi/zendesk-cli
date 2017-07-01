@@ -1,6 +1,6 @@
 # ZenDesk Command Line Tool
 
-Request information from ZenDesk and output it in several forms like JSON, Markdown, or TaskPaper. Some of this is simply easier than using `curl`, some of it would require more post processing than I want to do.
+Request information from ZenDesk and output it in several forms like JSON, Markdown, or TaskPaper. Some of this is simply easier than using `curl`; some of it would require more post processing than I want to do.
 
 I pipe the JSON output to [`jq`][1] often. I use the TaskPaper to send to OmniFocus, and I document tickets with a certain format that corresponds to a Ulysses filter.
 
