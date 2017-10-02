@@ -7,7 +7,6 @@
 # 2017-06-27
 
 require "zendesk_api"
-require "string-scrub"
 require "json"
 
 def usage
