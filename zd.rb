@@ -43,17 +43,17 @@ def ticketproject(client, id)
 		duration = "30 minutes"
 	end
 	if duration != ""
-		priority_text = "- #{id}: Send simple initial response within #{duration} of SLA: «Priority»  @context(Work : Ticket Duties)\n"
+		priority_text = "\t- #{id}: Send simple initial response within #{duration} of SLA: «Priority»  @context(Work : Ticket Duties)\n"
 	else
 		priority_text = ""
 	end
-	return "#{id}: #{ticket.subject}
-    #{org.name.to_s}
-    #{contact}: #{ticket.requester.email}
-    Original priority: #{ticket.priority}
-#{priority_text}- #{id}: Send a response based on ticket @context(Work : Ticket Duties)
-- #{id}: Wait to hear from #{contact} @context(Work : Waiting For)
-- #{id}: Set ticket to solved @context(Work : Ticket Duties)"
+	return "- #{id}: #{ticket.subject} @parallel(false) @autodone(true) @flagged 
+\t#{org.name.to_s}
+\t#{contact}: #{ticket.requester.email}
+\tOriginal priority: #{ticket.priority}
+#{priority_text}\t- #{id}: Send a response based on ticket @context(Work : Ticket Duties)
+\t- #{id}: Wait to hear from #{contact} @context(Work : Waiting For)
+\t- #{id}: Set ticket to solved @context(Work : Ticket Duties)"
 end
 
 # Output my Markdown Ticket Notes format
