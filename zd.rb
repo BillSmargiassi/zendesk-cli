@@ -47,7 +47,7 @@ def ticketproject(client, id)
 	else
 		priority_text = ""
 	end
-	return "- #{id}: #{ticket.subject} @parallel(false) @autodone(true) @flagged 
+	return "- #{id}: #{ticket.subject} @context(Work : Ticket Duties) @parallel(false) @autodone(true) @flagged 
 \t#{org.name.to_s}
 \t#{contact}: #{ticket.requester.email}
 \tOriginal priority: #{ticket.priority}
